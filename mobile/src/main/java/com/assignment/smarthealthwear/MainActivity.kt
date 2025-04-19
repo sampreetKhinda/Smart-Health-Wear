@@ -1,6 +1,7 @@
 package com.assignment.smarthealthwear
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
@@ -17,7 +18,7 @@ import com.google.android.gms.wearable.DataMapItem
 import com.google.android.gms.wearable.Wearable
 import org.json.JSONObject
 
-class MainActivity : ComponentActivity(), DataClient.OnDataChangedListener {
+class MainActivity : ComponentActivity() {
     private val dataListener = HealthDataListener()
     private var steps = mutableStateOf<Int?>(null)
     private var calories = mutableStateOf<Int?>(null)
@@ -27,9 +28,7 @@ class MainActivity : ComponentActivity(), DataClient.OnDataChangedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContent {
-            HealthDataScreen(steps.value, calories.value, heartRate.value, spo2.value)
-        }
+        setContentView(R.layout.activity_main)
     }
 
     override fun onResume() {
@@ -43,20 +42,5 @@ class MainActivity : ComponentActivity(), DataClient.OnDataChangedListener {
     }
 
 
-    override fun onDataChanged(dataEvents: DataEventBuffer) {
-        for (event in dataEvents) {
-            if (event.type == DataEvent.TYPE_CHANGED &&
-                event.dataItem.uri.path == "/health-data") {
 
-                val json = DataMapItem.fromDataItem(event.dataItem)
-                    .dataMap.getString("health_json")
-
-                val data = JSONObject(json)
-                steps.value = data.optInt("steps", -1).takeIf { it >= 0 }
-                calories.value = data.optInt("calories", -1).takeIf { it >= 0 }
-                heartRate.value = data.optInt("heartRate", -1).takeIf { it >= 0 }
-                spo2.value = data.optInt("spo2", -1).takeIf { it >= 0 }
-            }
-        }
-    }
 }

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -32,7 +33,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.11" // Or your Compose version
+        kotlinCompilerExtensionVersion = "1.5.10"
     }
     kotlinOptions {
         jvmTarget = "11"

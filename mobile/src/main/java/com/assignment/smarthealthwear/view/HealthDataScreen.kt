@@ -20,34 +20,34 @@ fun HealthDataScreen(
     heartRate: Int?,
     spo2: Int?
 ) {
-    Surface(modifier = Modifier.fillMaxSize()) {
+    /*Surface(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
                 .padding(24.dp)
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            Text("Synced Health Data", style = MaterialTheme.typography.headlineSmall)
+            //Text("Synced Health Data", style = MaterialTheme.typography.headlineSmall)
 
             steps?.let {
-                Text("🦶 Steps: $it")
+                //Text("🦶 Steps: $it")
             }
 
             calories?.let {
-                Text("🔥 Calories: $it kcal")
+                //Text("🔥 Calories: $it kcal")
             }
 
             heartRate?.let {
-                Text("❤️ Heart Rate: $it bpm")
+                //Text("❤️ Heart Rate: $it bpm")
             }
 
             spo2?.let {
-                Text("🩸 SpO₂: $it %")
+               // Text("🩸 SpO₂: $it %")
             }
 
             if (steps == null && calories == null && heartRate == null && spo2 == null) {
-                Text("Waiting for data from Wear OS...")
+               // Text("Waiting for data from Wear OS...")
             }
         }
-    }
+    }*/
 }

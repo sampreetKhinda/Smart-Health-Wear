@@ -24,6 +24,7 @@ androidxHealthServices = "1.1.0-alpha05"
 gauavaVersion = "32.1.3-jre"
 roomVersion = "2.7.0"
 runtimeAndroid = "1.7.8"
+playSerVer = "1.7.3"
 
 foundationLayoutAndroid = "1.7.8"
 material3Android = "1.3.2"
@@ -57,7 +58,7 @@ room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomVers
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomVersion" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomVersion" }
 material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
-kotlinx-coroutines-play-services = { group ="org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "kotlin" }
+kotlinx-coroutines-play-services = { group ="org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "playSerVer" }
 androidx-runtime-android = { group = "androidx.compose.runtime", name = "runtime-android", version.ref = "runtimeAndroid" }
 androidx-foundation-layout-android = { group = "androidx.compose.foundation", name = "foundation-layout-android", version.ref = "foundationLayoutAndroid" }
 androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
@@ -67,4 +68,5 @@ androidx-material3-android = { group = "androidx.compose.material3", name = "mat
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt" }
 

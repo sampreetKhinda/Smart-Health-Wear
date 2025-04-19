@@ -1,9 +1,12 @@
 package com.assignment.smarthealthwear.repository
 
 import android.content.Context
+import android.util.Log
 import com.assignment.smarthealthwear.db.HealthDatabase
 import com.assignment.smarthealthwear.manager.sendHealthDataToPhone
 import com.assignment.smarthealthwear.model.HealthData
+import com.google.android.gms.wearable.CapabilityClient
+import com.google.android.gms.wearable.Wearable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -55,13 +58,23 @@ class HealthDataRepository(private val context: Context) {
             dao.insert(data)
         }
         if (syncToPhone) {
-            sendHealthDataToPhone(
-                context = context,
-                steps = steps,
-                calories = calories,
-                heartRate = heartRate,
-                spo2 = spo2
-            )
+            Wearable.getCapabilityClient(context)
+                .getCapability("health_data_receiver", CapabilityClient.FILTER_REACHABLE)
+                .addOnSuccessListener { info ->
+                    if (info.nodes.isNotEmpty()) {
+                        sendHealthDataToPhone(
+                            context = context,
+                            steps = steps,
+                            calories = calories,
+                            heartRate = heartRate,
+                            spo2 = spo2
+                        )
+                    } else {
+                        Log.d("Wear", "No reachable phone app found")
+                    }
+                }
+
+
         }
 
     }
